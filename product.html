@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RentHub - Booking</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4f6f8;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#111;
+color:white;
+display:flex;
+justify-content:space-between;
+padding:15px 40px;
+align-items:center;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+.logo span{
+color:#ff9800;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+/* MAIN */
+
+.container{
+display:flex;
+justify-content:center;
+padding:60px 20px;
+}
+
+.box{
+background:white;
+width:1000px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+display:flex;
+overflow:hidden;
+}
+
+/* IMAGE */
+
+.image{
+flex:1;
+}
+
+.image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* DETAILS */
+
+.details{
+flex:1;
+padding:40px;
+}
+
+.location{
+color:#666;
+margin:10px 0;
+}
+
+.price{
+font-weight:bold;
+font-size:18px;
+margin-bottom:20px;
+}
+
+/* BOOKING */
+
+.booking{
+background:#f4f6f8;
+padding:20px;
+border-radius:8px;
+}
+
+.booking input{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.total{
+font-weight:bold;
+margin-top:10px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#2c5364;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#1e3c4a;
+}
+
+.error{
+color:red;
+margin-top:10px;
+}
+
+.success{
+color:green;
+margin-top:10px;
+font-weight:bold;
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">Rent<span>Hub</span></div>
+<div>
+<a href="page1.html">Home</a>
+<a href="browse.html">Browse</a>
+</div>
+</div>
+
+<div class="container">
+
+<div class="box">
+
+<div class="image">
+<img id="image">
+</div>
+
+<div class="details">
+
+<h2 id="name"></h2>
+<p class="location" id="location"></p>
+<p class="price" id="price"></p>
+
+<div class="booking">
+
+<label>Start Date</label>
+<input type="date" id="start">
+
+<label>End Date</label>
+<input type="date" id="end">
+
+<div class="total" id="total">Total: ₹0</div>
+
+<button onclick="calculate()">Calculate Price</button>
+<button onclick="confirmBooking()">Confirm Booking</button>
+
+<div class="error" id="error"></div>
+<div class="success" id="success">🎉 Booking Confirmed!</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+// Get product data
+const params = new URLSearchParams(window.location.search);
+
+const name = params.get("name");
+const priceText = params.get("price");
+const locationText = params.get("location");
+const image = params.get("image");
+
+const pricePerDay = parseInt(priceText.replace(/\D/g,''));
+
+document.getElementById("name").innerText = name;
+document.getElementById("price").innerText = priceText;
+document.getElementById("location").innerText = "📍 " + locationText;
+document.getElementById("image").src = image;
+
+// Disable past dates
+const today = new Date().toISOString().split("T")[0];
+document.getElementById("start").min = today;
+document.getElementById("end").min = today;
+
+function calculate(){
+
+const start = new Date(document.getElementById("start").value);
+const end = new Date(document.getElementById("end").value);
+const error = document.getElementById("error");
+
+if(!start || !end){
+error.innerText = "Please select both dates.";
+return;
+}
+
+if(end <= start){
+error.innerText = "Minimum rental period is 1 day.";
+return;
+}
+
+const days = (end - start) / (1000 * 60 * 60 * 24);
+
+const total = days * pricePerDay;
+
+document.getElementById("total").innerText = "Total: ₹" + total;
+error.innerText = "";
+
+}
+
+function confirmBooking(){
+
+const start = document.getElementById("start").value;
+const end = document.getElementById("end").value;
+const totalText = document.getElementById("total").innerText;
+const error = document.getElementById("error");
+
+if(!start || !end){
+error.innerText = "Select dates before confirming.";
+return;
+}
+
+if(totalText === "Total: ₹0"){
+error.innerText = "Please calculate total first.";
+return;
+}
+
+// Simulate login check
+// const loggedIn = localStorage.getItem("renthubUser");
+
+// if(!loggedIn){
+// alert("Please login first.");
+// window.location.href = "login.html";
+// return;
+// }
+
+// Save booking
+const booking = {
+product:name,
+location:locationText,
+start:start,
+end:end,
+total:totalText
+};
+
+localStorage.setItem("latestBooking", JSON.stringify(booking));
+
+document.getElementById("success").style.display = "block";
+error.innerText = "";
+
+}
+
+</script>
+
+</body>
+</html>

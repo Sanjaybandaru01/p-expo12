@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RentHub - Browse Items</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+}
+
+/* NAVBAR */
+
+.navbar{
+    background:#111;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.logo-icon{
+    width:35px;
+    height:35px;
+    margin-right:10px;
+}
+
+.logo span{
+    color:#ff9800;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+}
+
+.navbar a:hover{
+    color:#ff9800;
+}
+
+/* PAGE TITLE */
+
+.title{
+    text-align:center;
+    margin-top:30px;
+}
+
+/* PRODUCTS GRID */
+
+.container{
+    padding:40px;
+}
+
+.items{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.card button{
+    width:100%;
+    padding:10px;
+    background:#2c5364;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="#ff9800">
+            <path d="M12 2L2 7v6c0 5 3.8 9.4 10 11 6.2-1.6 10-6 10-11V7L12 2z"/>
+        </svg>
+        Rent<span>Hub</span>
+    </div>
+
+    <div>
+        <a href="page1.html">Home</a>
+        <a href="browse.html">Browse</a>
+        <a href="index.html">Login</a>
+        <a href="register.html">Register</a>
+    </div>
+
+</div>
+
+<h2 class="title">Browse Rental Items</h2>
+
+<!-- PRODUCTS -->
+
+<div class="container">
+
+<div class="items">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32">
+<h3>DSLR Camera</h3>
+<p>₹500/day</p>
+<button>Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>MacBook Laptop</h3>
+<p>₹700/day</p>
+<button>Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39">
+<h3>Sports Bike</h3>
+<p>₹1000/day</p>
+<button>Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e">
+<h3>Headphones</h3>
+<p>₹200/day</p>
+<button>Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89">
+<h3>Gaming Laptop</h3>
+<p>₹900/day</p>
+<button>Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f">
+<h3>Projector</h3>
+<p>₹400/day</p>
+<button>Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e">
+<h3>Wireless Headset</h3>
+<p>₹150/day</p>
+<button>Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853">
+<h3>Tablet</h3>
+<p>₹300/day</p>
+<button>Rent Now</button>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RentHub - Object Rental System</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#f4f6f8;
+}
+
+.navbar{
+background:#111;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+}
+
+.logo{
+display:flex;
+align-items:center;
+font-size:22px;
+font-weight:bold;
+}
+
+.logo span{
+color:#ff9800;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+}
+
+.hero{
+text-align:center;
+padding:60px 20px;
+background:linear-gradient(to right,#0f2027,#203a43,#2c5364);
+color:white;
+}
+
+.container{
+padding:40px;
+}
+
+.items{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.location{
+margin-top:8px;
+font-size:14px;
+color:#666;
+}
+
+.card button{
+width:100%;
+padding:10px;
+background:#2c5364;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.footer{
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">Rent<span>Hub</span></div>
+
+<div>
+<a href="page1.html">Home</a>
+<a href="browse.html">Browse</a>
+<a href="index.html">Login</a>
+<a href="register.html">Register</a>
+</div>
+</div>
+
+<div class="hero">
+<h1>Rent Anything Anytime 🚀</h1>
+<p>Find cameras, laptops, bikes and more.</p>
+</div>
+
+<div class="container">
+
+<h2>Available Items</h2>
+
+<div class="items">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32">
+<p class="location">📍 Gachibowli, Hyderabad</p>
+<h3>DSLR Camera</h3>
+<p>₹500 / day</p>
+<button onclick="viewDetails('DSLR Camera','₹500/day','Gachibowli, Hyderabad','https://images.unsplash.com/photo-1516035069371-29a1b244cc32')">Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<p class="location">📍 Hitech City, Hyderabad</p>
+<h3>MacBook Laptop</h3>
+<p>₹700 / day</p>
+<button onclick="viewDetails('MacBook Laptop','₹700/day','Hitech City, Hyderabad','https://images.unsplash.com/photo-1517336714731-489689fd1ca8')">Rent Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39">
+<p class="location">📍 Madhapur, Hyderabad</p>
+<h3>Sports Bike</h3>
+<p>₹1000 / day</p>
+<button onclick="viewDetails('Sports Bike','₹1000/day','Madhapur, Hyderabad','https://images.unsplash.com/photo-1558981806-ec527fa84c39')">Rent Now</button>
+</div>
+
+<div class="card">
+<img src="headphones.jpg">
+<p class="location">📍 Kukatpally, Hyderabad</p>
+<h3>Noise Cancelling Headphones</h3>
+<p>₹200 / day</p>
+<button onclick="viewDetails('Headphones','₹200/day','Kukatpally, Hyderabad','headphones.jpg')">Rent Now</button>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+<p>© 2026 RentHub - Object Rental System</p>
+</div>
+
+<script>
+
+function viewDetails(name,price,location,image){
+
+const url = `product.html?name=${encodeURIComponent(name)}
+&price=${encodeURIComponent(price)}
+&location=${encodeURIComponent(location)}
+&image=${encodeURIComponent(image)}`;
+
+window.location.href = url;
+
+}
+
+</script>
+
+</body>
+</html>
